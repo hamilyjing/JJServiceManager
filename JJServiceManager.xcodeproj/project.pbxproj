@@ -9,7 +9,25 @@
 /* Begin PBXBuildFile section */
 		AB07123520045E3000559041 /* JJServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB07122B20045E2F00559041 /* JJServiceManager.framework */; };
 		AB07123A20045E3000559041 /* JJServiceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB07123920045E3000559041 /* JJServiceManagerTests.m */; };
-		AB07123C20045E3000559041 /* JJServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AB07122E20045E2F00559041 /* JJServiceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB96E8242004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB96E80C2004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh */; };
+		AB96E8252004609C001F1B1F /* YZTServiceNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E80E2004609C001F1B1F /* YZTServiceNotification.m */; };
+		AB96E8262004609C001F1B1F /* YZTServiceNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E80F2004609C001F1B1F /* YZTServiceNotification.h */; };
+		AB96E8272004609C001F1B1F /* YZTCustomRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8112004609C001F1B1F /* YZTCustomRequest.m */; };
+		AB96E8282004609C001F1B1F /* YZTCustomRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8122004609C001F1B1F /* YZTCustomRequest.h */; };
+		AB96E8292004609C001F1B1F /* JJServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8132004609C001F1B1F /* JJServiceManager.h */; };
+		AB96E82A2004609C001F1B1F /* JJServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8152004609C001F1B1F /* JJServiceFactory.h */; };
+		AB96E82B2004609C001F1B1F /* JJServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8162004609C001F1B1F /* JJServiceFactory.m */; };
+		AB96E82C2004609C001F1B1F /* JJFeatureSet.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8182004609C001F1B1F /* JJFeatureSet.h */; };
+		AB96E82D2004609C001F1B1F /* JJFeatureSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8192004609C001F1B1F /* JJFeatureSet.m */; };
+		AB96E82E2004609C001F1B1F /* JJServiceBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E81B2004609C001F1B1F /* JJServiceBatchRequest.m */; };
+		AB96E82F2004609C001F1B1F /* JJService.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E81C2004609C001F1B1F /* JJService.h */; };
+		AB96E8302004609C001F1B1F /* JJService+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E81D2004609C001F1B1F /* JJService+Private.h */; };
+		AB96E8312004609C001F1B1F /* JJServiceChainRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E81E2004609C001F1B1F /* JJServiceChainRequest.h */; };
+		AB96E8322004609C001F1B1F /* JJService.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E81F2004609C001F1B1F /* JJService.m */; };
+		AB96E8332004609C001F1B1F /* JJServiceBatchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8202004609C001F1B1F /* JJServiceBatchRequest.h */; };
+		AB96E8342004609C001F1B1F /* JJService+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8212004609C001F1B1F /* JJService+Private.m */; };
+		AB96E8352004609C001F1B1F /* JJServiceChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8222004609C001F1B1F /* JJServiceChainRequest.m */; };
+		AB96E8362004609C001F1B1F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB96E8232004609C001F1B1F /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +42,28 @@
 
 /* Begin PBXFileReference section */
 		AB07122B20045E2F00559041 /* JJServiceManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JJServiceManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB07122E20045E2F00559041 /* JJServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJServiceManager.h; sourceTree = "<group>"; };
-		AB07122F20045E2F00559041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB07123420045E3000559041 /* JJServiceManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJServiceManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB07123920045E3000559041 /* JJServiceManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJServiceManagerTests.m; sourceTree = "<group>"; };
 		AB07123B20045E3000559041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB96E80C2004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = YZT_iOS_ServiceManager_AddPublicHeader.sh; sourceTree = "<group>"; };
+		AB96E80E2004609C001F1B1F /* YZTServiceNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZTServiceNotification.m; sourceTree = "<group>"; };
+		AB96E80F2004609C001F1B1F /* YZTServiceNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZTServiceNotification.h; sourceTree = "<group>"; };
+		AB96E8112004609C001F1B1F /* YZTCustomRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZTCustomRequest.m; sourceTree = "<group>"; };
+		AB96E8122004609C001F1B1F /* YZTCustomRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZTCustomRequest.h; sourceTree = "<group>"; };
+		AB96E8132004609C001F1B1F /* JJServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceManager.h; sourceTree = "<group>"; };
+		AB96E8152004609C001F1B1F /* JJServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceFactory.h; sourceTree = "<group>"; };
+		AB96E8162004609C001F1B1F /* JJServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJServiceFactory.m; sourceTree = "<group>"; };
+		AB96E8182004609C001F1B1F /* JJFeatureSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJFeatureSet.h; sourceTree = "<group>"; };
+		AB96E8192004609C001F1B1F /* JJFeatureSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJFeatureSet.m; sourceTree = "<group>"; };
+		AB96E81B2004609C001F1B1F /* JJServiceBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJServiceBatchRequest.m; sourceTree = "<group>"; };
+		AB96E81C2004609C001F1B1F /* JJService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJService.h; sourceTree = "<group>"; };
+		AB96E81D2004609C001F1B1F /* JJService+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JJService+Private.h"; sourceTree = "<group>"; };
+		AB96E81E2004609C001F1B1F /* JJServiceChainRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceChainRequest.h; sourceTree = "<group>"; };
+		AB96E81F2004609C001F1B1F /* JJService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJService.m; sourceTree = "<group>"; };
+		AB96E8202004609C001F1B1F /* JJServiceBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceBatchRequest.h; sourceTree = "<group>"; };
+		AB96E8212004609C001F1B1F /* JJService+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JJService+Private.m"; sourceTree = "<group>"; };
+		AB96E8222004609C001F1B1F /* JJServiceChainRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJServiceChainRequest.m; sourceTree = "<group>"; };
+		AB96E8232004609C001F1B1F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +88,7 @@
 		AB07122120045E2F00559041 = {
 			isa = PBXGroup;
 			children = (
-				AB07122D20045E2F00559041 /* JJServiceManager */,
+				AB96E80B2004609C001F1B1F /* JJServiceManager */,
 				AB07123820045E3000559041 /* JJServiceManagerTests */,
 				AB07122C20045E2F00559041 /* Products */,
 			);
@@ -68,15 +103,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AB07122D20045E2F00559041 /* JJServiceManager */ = {
-			isa = PBXGroup;
-			children = (
-				AB07122E20045E2F00559041 /* JJServiceManager.h */,
-				AB07122F20045E2F00559041 /* Info.plist */,
-			);
-			path = JJServiceManager;
-			sourceTree = "<group>";
-		};
 		AB07123820045E3000559041 /* JJServiceManagerTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +112,72 @@
 			path = JJServiceManagerTests;
 			sourceTree = "<group>";
 		};
+		AB96E80B2004609C001F1B1F /* JJServiceManager */ = {
+			isa = PBXGroup;
+			children = (
+				AB96E8172004609C001F1B1F /* FeatureSet */,
+				AB96E8232004609C001F1B1F /* Info.plist */,
+				AB96E8132004609C001F1B1F /* JJServiceManager.h */,
+				AB96E8102004609C001F1B1F /* Network */,
+				AB96E80D2004609C001F1B1F /* Notification */,
+				AB96E81A2004609C001F1B1F /* Service */,
+				AB96E8142004609C001F1B1F /* ServiceFactory */,
+				AB96E80C2004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh */,
+			);
+			path = JJServiceManager;
+			sourceTree = "<group>";
+		};
+		AB96E80D2004609C001F1B1F /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				AB96E80F2004609C001F1B1F /* YZTServiceNotification.h */,
+				AB96E80E2004609C001F1B1F /* YZTServiceNotification.m */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		AB96E8102004609C001F1B1F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AB96E8122004609C001F1B1F /* YZTCustomRequest.h */,
+				AB96E8112004609C001F1B1F /* YZTCustomRequest.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AB96E8142004609C001F1B1F /* ServiceFactory */ = {
+			isa = PBXGroup;
+			children = (
+				AB96E8152004609C001F1B1F /* JJServiceFactory.h */,
+				AB96E8162004609C001F1B1F /* JJServiceFactory.m */,
+			);
+			path = ServiceFactory;
+			sourceTree = "<group>";
+		};
+		AB96E8172004609C001F1B1F /* FeatureSet */ = {
+			isa = PBXGroup;
+			children = (
+				AB96E8182004609C001F1B1F /* JJFeatureSet.h */,
+				AB96E8192004609C001F1B1F /* JJFeatureSet.m */,
+			);
+			path = FeatureSet;
+			sourceTree = "<group>";
+		};
+		AB96E81A2004609C001F1B1F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AB96E81C2004609C001F1B1F /* JJService.h */,
+				AB96E81F2004609C001F1B1F /* JJService.m */,
+				AB96E81D2004609C001F1B1F /* JJService+Private.h */,
+				AB96E8212004609C001F1B1F /* JJService+Private.m */,
+				AB96E8202004609C001F1B1F /* JJServiceBatchRequest.h */,
+				AB96E81B2004609C001F1B1F /* JJServiceBatchRequest.m */,
+				AB96E81E2004609C001F1B1F /* JJServiceChainRequest.h */,
+				AB96E8222004609C001F1B1F /* JJServiceChainRequest.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -93,7 +185,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB07123C20045E3000559041 /* JJServiceManager.h in Headers */,
+				AB96E8332004609C001F1B1F /* JJServiceBatchRequest.h in Headers */,
+				AB96E82C2004609C001F1B1F /* JJFeatureSet.h in Headers */,
+				AB96E8292004609C001F1B1F /* JJServiceManager.h in Headers */,
+				AB96E8312004609C001F1B1F /* JJServiceChainRequest.h in Headers */,
+				AB96E82F2004609C001F1B1F /* JJService.h in Headers */,
+				AB96E82A2004609C001F1B1F /* JJServiceFactory.h in Headers */,
+				AB96E8262004609C001F1B1F /* YZTServiceNotification.h in Headers */,
+				AB96E8282004609C001F1B1F /* YZTCustomRequest.h in Headers */,
+				AB96E8302004609C001F1B1F /* JJService+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +278,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB96E8362004609C001F1B1F /* Info.plist in Resources */,
+				AB96E8242004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +297,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB96E82B2004609C001F1B1F /* JJServiceFactory.m in Sources */,
+				AB96E82D2004609C001F1B1F /* JJFeatureSet.m in Sources */,
+				AB96E82E2004609C001F1B1F /* JJServiceBatchRequest.m in Sources */,
+				AB96E8342004609C001F1B1F /* JJService+Private.m in Sources */,
+				AB96E8322004609C001F1B1F /* JJService.m in Sources */,
+				AB96E8272004609C001F1B1F /* YZTCustomRequest.m in Sources */,
+				AB96E8252004609C001F1B1F /* YZTServiceNotification.m in Sources */,
+				AB96E8352004609C001F1B1F /* JJServiceChainRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
