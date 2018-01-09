@@ -17,7 +17,7 @@
  *  @param notificationNames notification name list
  *  @param completion        completion callback
  */
-- (void)performBatchRequest:(void (^)())batchRequest
+- (void)performBatchRequest:(void (^)(void))batchRequest
   responseNotificationNames:(NSArray *)notificationNames
                  completion:(void (^)(NSDictionary *responseContent))completion;
 

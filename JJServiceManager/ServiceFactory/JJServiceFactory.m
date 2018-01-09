@@ -46,12 +46,12 @@
         return nil;
     }
     
-    [self yzt_beginOperateLock];
+    [self jj_beginOperateLock];
     
     JJService *service = self.serviceContainer[serviceName_];
     if (service)
     {
-        [self yzt_endOperateLock];
+        [self jj_endOperateLock];
         return service;
     }
     
@@ -59,7 +59,7 @@
     BOOL isNeedUnload = timeInterval > self.checkIntervalOfUnloadingService;
     if (isNeedUnload)
     {
-        [self yzt_unloadUnneededServiceWithNoLock];
+        [self jj_unloadUnneededServiceWithNoLock];
         self.beginDateOfUnloadingService = [NSDate date];
     }
     
@@ -68,7 +68,7 @@
     self.serviceContainer[serviceName_] = service;
     [service serviceDidLoad];
     
-    [self yzt_endOperateLock];
+    [self jj_endOperateLock];
     
     return service;
 }
@@ -83,13 +83,13 @@
 {
     NSParameterAssert(serviceName_);
     
-    [self yzt_beginOperateLock];
+    [self jj_beginOperateLock];
     
     JJService *service = self.serviceContainer[serviceName_];
     
     if (!isForceUnload_ && ![service needUnloading])
     {
-        [self yzt_endOperateLock];
+        [self jj_endOperateLock];
         
         return;
     }
@@ -98,22 +98,22 @@
     [self.serviceContainer removeObjectForKey:serviceName_];
     [service serviceDidUnload];
     
-    [self yzt_endOperateLock];
+    [self jj_endOperateLock];
 }
 
 #pragma mark - private
 
-- (void)yzt_beginOperateLock
+- (void)jj_beginOperateLock
 {
-    os_unfair_lock_lock(self.operateLock);
+    os_unfair_lock_lock(_operateLock);
 }
 
-- (void)yzt_endOperateLock
+- (void)jj_endOperateLock
 {
-    os_unfair_lock_unlock(self.operateLock);
+    os_unfair_lock_unlock(_operateLock);
 }
 
-- (void)yzt_unloadUnneededServiceWithNoLock
+- (void)jj_unloadUnneededServiceWithNoLock
 {
     NSMutableArray *unloadingKeys = [NSMutableArray array];
     

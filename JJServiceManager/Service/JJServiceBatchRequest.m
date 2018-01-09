@@ -29,7 +29,7 @@
 
 #pragma mark - public
 
-- (void)performBatchRequest:(void (^)())batchRequest_
+- (void)performBatchRequest:(void (^)(void))batchRequest_
   responseNotificationNames:(NSArray *)notificationNames_
                  completion:(void (^)(NSDictionary *responseContent))completion_
 {

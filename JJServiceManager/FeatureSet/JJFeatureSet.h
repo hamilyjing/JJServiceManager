@@ -10,7 +10,7 @@
 
 @class JJBaseRequest;
 @class JJService;
-@class JJGPRequest;
+@class JJBaseRequest;
 @class JJGPModel;
 
 @interface JJFeatureSet : NSObject
@@ -47,12 +47,12 @@
 
 #pragma mark - GP
 
-- (void)startGPRequest:(JJGPRequest *)request
+- (void)startGPRequest:(JJBaseRequest *)request
              otherInfo:(id)otherInfo
-         successAction:(void (^)(id object, JJGPRequest *request))successAction
-            failAction:(void (^)(NSError *error, JJGPRequest *request))failAction;
+         successAction:(void (^)(id object, JJBaseRequest *request))successAction
+            failAction:(void (^)(NSError *error, JJBaseRequest *request))failAction;
 
-- (void)startGPRequest:(JJGPRequest *)request
+- (void)startGPRequest:(JJBaseRequest *)request
              otherInfo:(id)otherInfo;
 
 - (id)cacheModelWithParameters:(NSDictionary *)parameters
@@ -61,7 +61,7 @@
                     modelClass:(Class)modelClass
                   isSaveToDisk:(BOOL)isSaveToDisk;
 
-- (JJGPRequest *)requestWithParameters:(NSDictionary *)parameters
+- (JJBaseRequest *)requestWithParameters:(NSDictionary *)parameters
                  requestClass:(Class)requestClass
                   requestType:(NSString *)requestType
                    modelClass:(Class)modelClass
@@ -69,7 +69,7 @@
        networkSuccessResponse:(void(^)(id object, id otherinfo))networkSuccessResponse
           networkFailResponse:(void (^)(NSError *error, id otherinfo))networkFailResponse;
 
-- (JJGPRequest *)requestWithParameters:(NSDictionary *)parameters_
+- (JJBaseRequest *)requestWithParameters:(NSDictionary *)parameters_
                            requestClass:(Class)requestClass_
                             requestType:(NSString *)requestType_
                              modelClass:(Class)modelClass_

@@ -92,6 +92,6 @@
 
 #pragma mark - Feature Set Macro
 
-#define JJ_SERVICE_FEATURE_SET(serviceObj, featureSet) ((featureSet *)[serviceObj featureSetWithFeatureSetName:[featureSet featureSetName]])
+#define jj_SERVICE_FEATURE_SET(serviceObj, featureSet) ((featureSet *)[serviceObj featureSetWithFeatureSetName:[featureSet featureSetName]])
 
-#define JJ_SERVICE_UNLOAD_FEATURE_SET(serviceObj, featureSet) [serviceObj unloadFeatureSetWithFeatureSetName:[featureSet featureSetName]]
+#define jj_SERVICE_UNLOAD_FEATURE_SET(serviceObj, featureSet) [serviceObj unloadFeatureSetWithFeatureSetName:[featureSet featureSetName]]

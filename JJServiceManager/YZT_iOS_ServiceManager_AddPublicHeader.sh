@@ -1,5 +1,5 @@
 
-projectName='JJ_iOS_ServiceManager'
+projectName='jj_iOS_ServiceManager'
 headerPath=./${projectName}.h
 tempHeaderPath=${projectName}.h.temp
 searchPath=./

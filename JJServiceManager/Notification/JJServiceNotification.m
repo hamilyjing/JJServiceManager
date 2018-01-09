@@ -14,8 +14,3 @@ NSString *JJServiceNotificationKeySuccess = @"success";
 NSString *JJServiceNotificationKeyObject = @"object";
 NSString *JJServiceNotificationKeyOtherInfo = @"otherInfo";
 NSString *JJServiceNotificationKeyOtherInfoResponseStringKey = @"responseString";
-
-// network
-NSString *JJServiceNetworkRequestStartNotification = @"JJServiceNetworkRequestStartNotification";
-NSString *JJServiceNetworkRequestSuccessedNotification = @"JJServiceNetworkRequestSuccessedNotification";
-NSString *JJServiceNetworkRequestFailedNotification = @"JJServiceNetworkRequestFailedNotification";

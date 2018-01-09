@@ -8,9 +8,10 @@
 
 #import "JJFeatureSet.h"
 
-#import <JJ_iOS_HttpTransportService/JJ_iOS_HttpTransportService.h>
 #import "JJService.h"
 #import "JJServiceFactory.h"
+#import "JJBaseRequest.h"
+#import "JJNSMutableDictionaryHelper.h"
 
 extern NSString *JJServiceNotificationKeyOtherInfoResponseStringKey;
 extern NSString *JJServiceNotificationKeyOtherInfo;
@@ -87,11 +88,7 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
                  [responseOtherInfo addEntriesFromDictionary:otherInfo_];
              }
              
-             NSString *responseString = request.responseString;
-             if ([request isKindOfClass:[JJGPRequest class]])
-             {
-                 responseString = [(JJGPRequest *)request filterResponseString:request.responseString];
-             }
+             NSString *responseString = [request_ filterResponseString:request.responseString];
              [JJNSMutableDictionaryHelper mDictionary:responseOtherInfo setObj:responseString forKey:JJServiceNotificationKeyOtherInfoResponseStringKey];
              
              tempOtherInfo = responseOtherInfo;
@@ -107,7 +104,7 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
          
      }failure:^(YTKBaseRequest *request)
      {
-         id object = request_.error; //request_.requestOperationError
+         id object = request_.error;
          
          if (failAction_)
          {
@@ -149,20 +146,20 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
 
 #pragma mark -- GP
 
-- (void)startGPRequest:(JJGPRequest *)request_
+- (void)startGPRequest:(JJBaseRequest *)request_
              otherInfo:(id)otherInfo_
-         successAction:(void (^)(id object, JJGPRequest *request))successAction_
-            failAction:(void (^)(NSError *error, JJGPRequest *request))failAction_
+         successAction:(void (^)(id object, JJBaseRequest *request))successAction_
+            failAction:(void (^)(NSError *error, JJBaseRequest *request))failAction_
 {
     [self startRequest:request_
-           requestType:request_.operationType
-             parameter:request_.parameters
+           requestType:request_.identity
+             parameter:request_.parametersForSavedFileName
              otherInfo:otherInfo_
          successAction:(void (^)(id object, JJBaseRequest *request))successAction_
             failAction:(void (^)(NSError *error, JJBaseRequest *request))failAction_];
 }
 
-- (void)startGPRequest:(JJGPRequest *)request_
+- (void)startGPRequest:(JJBaseRequest *)request_
              otherInfo:(id)otherInfo_
 {
     [self startGPRequest:request_
@@ -177,7 +174,7 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
                     modelClass:(Class)modelClass_
                   isSaveToDisk:(BOOL)isSaveToDisk_
 {
-    JJGPRequest *request = [self yzt_requestWithParameters:parameters_ requestClass:requestClass_ requestType:requestType_ modelClass:modelClass_ isSaveToDisk:isSaveToDisk_];
+    JJBaseRequest *request = [self jj_requestWithParameters:parameters_ requestClass:requestClass_ requestType:requestType_ modelClass:modelClass_ isSaveToDisk:isSaveToDisk_];
     id model = [request cacheModel];
     return model;
 }
@@ -188,11 +185,11 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
                             modelClass:(Class)modelClass
                           isSaveToDisk:(BOOL)isSaveToDisk
 {
-    JJGPRequest *request = [self yzt_requestWithParameters:parameters requestClass:requestClass requestType:requestType modelClass:modelClass isSaveToDisk:isSaveToDisk];
+    JJBaseRequest *request = [self jj_requestWithParameters:parameters requestClass:requestClass requestType:requestType modelClass:modelClass isSaveToDisk:isSaveToDisk];
     [request removeAllCache];
 }
 
-- (JJGPRequest *)requestWithParameters:(NSDictionary *)parameters_
+- (JJBaseRequest *)requestWithParameters:(NSDictionary *)parameters_
                            requestClass:(Class)requestClass_
                             requestType:(NSString *)requestType_
                              modelClass:(Class)modelClass_
@@ -200,7 +197,7 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
                  networkSuccessResponse:(void(^)(id object, id otherinfo))networkSuccessResponse_
                     networkFailResponse:(void (^)(NSError *error, id otherinfo))networkFailResponse_
 {
-    JJGPRequest *request = [self yzt_requestWithParameters:parameters_ requestClass:requestClass_ requestType:requestType_ modelClass:modelClass_ isSaveToDisk:isSaveToDisk_];
+    JJBaseRequest *request = [self jj_requestWithParameters:parameters_ requestClass:requestClass_ requestType:requestType_ modelClass:modelClass_ isSaveToDisk:isSaveToDisk_];
     request.networkSuccessResponse = networkSuccessResponse_;
     request.networkFailResponse = networkFailResponse_;
     
@@ -209,7 +206,7 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
     return request;
 }
 
-- (JJGPRequest *)requestWithParameters:(NSDictionary *)parameters_
+- (JJBaseRequest *)requestWithParameters:(NSDictionary *)parameters_
                  requestClass:(Class)requestClass_
                   requestType:(NSString *)requestType_
                    modelClass:(Class)modelClass_
@@ -218,7 +215,7 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
        networkSuccessResponse:(void(^)(id object, id otherinfo))networkSuccessResponse_
           networkFailResponse:(void (^)(NSError *error, id otherinfo))networkFailResponse_
 {
-    JJGPRequest *request = [self yzt_requestWithParameters:parameters_ requestClass:requestClass_ requestType:requestType_ modelClass:modelClass_ isSaveToDisk:isSaveToDisk_ isEncryptRequest:isEncryptRequest_];
+    JJBaseRequest *request = [self jj_requestWithParameters:parameters_ requestClass:requestClass_ requestType:requestType_ modelClass:modelClass_ isSaveToDisk:isSaveToDisk_];
     request.networkSuccessResponse = networkSuccessResponse_;
     request.networkFailResponse = networkFailResponse_;
     
@@ -229,24 +226,17 @@ extern NSString *JJServiceNotificationKeyOtherInfo;
 
 #pragma mark - private
 
-- (JJGPRequest *)yzt_requestWithParameters:(NSDictionary *)parameters_
+- (JJBaseRequest *)jj_requestWithParameters:(NSDictionary *)parameters_
                                requestClass:(Class)requestClass_
                                 requestType:(NSString *)requestType_
                                  modelClass:(Class)modelClass_
                                isSaveToDisk:(BOOL)isSaveToDisk_
 {
-    JJGPRequest *request = [[requestClass_ alloc] initWithOperationType:requestType_ parameters:parameters_ modelClass:modelClass_ isSaveToMemory:NO isSaveToDisk:isSaveToDisk_];
-    return request;
-}
-
-- (JJGPRequest *)yzt_requestWithParameters:(NSDictionary *)parameters_
-                               requestClass:(Class)requestClass_
-                                requestType:(NSString *)requestType_
-                                 modelClass:(Class)modelClass_
-                               isSaveToDisk:(BOOL)isSaveToDisk_
-                           isEncryptRequest:(BOOL)isEncryptRequest_
-{
-    JJGPRequest *request = [[requestClass_ alloc] initWithOperationType:requestType_ parameters:parameters_ modelClass:modelClass_ isSaveToMemory:NO isSaveToDisk:isSaveToDisk_ isEncryptRequest:isEncryptRequest_];
+    JJBaseRequest *request = [[requestClass_ alloc] init];
+    request.identity = requestType_;
+    request.parametersForSavedFileName = parameters_;
+    request.modelClass = modelClass_;
+    request.isSaveToDisk = isSaveToDisk_;
     return request;
 }
 

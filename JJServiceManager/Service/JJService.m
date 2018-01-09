@@ -8,12 +8,12 @@
 
 #import "JJService.h"
 
-#import <libkern/OSAtomic.h>
+#import <os/lock.h>
 
 #import "JJFeatureSet.h"
 #import "JJServiceNotification.h"
 #import "JJCustomRequest.h"
-#import <JJ_iOS_HttpTransportService/JJNSMutableDictionaryHelper.h>
+#import "JJNSMutableDictionaryHelper.h"
 
 // login
 extern NSString *JJLoginServiceLoginSuccessNotification;       //JJLoginService_LoginSuccess
@@ -26,10 +26,10 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 
 @property (nonatomic, strong) NSMutableDictionary *featureSetContainer;
 
-@property (nonatomic, assign) OSSpinLock delegateListOperationLock;
+@property (nonatomic, assign) os_unfair_lock_t delegateListOperationLock;
 @property (nonatomic, strong) NSHashTable *delegateList;
 
-@property (nonatomic, assign) OSSpinLock spinLock;
+@property (nonatomic, assign) os_unfair_lock_t spinLock;
 @property (nonatomic, assign) NSInteger requestFinishCount;
 
 @property (nonatomic, strong) NSDate *recordExistBeginDate;
@@ -53,9 +53,9 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
         self.unusedExistSecondTimeInterval = 20;
         self.recordExistBeginDate = [NSDate date];
         
-        self.delegateListOperationLock = OS_SPINLOCK_INIT;
+        self.delegateListOperationLock = &(OS_UNFAIR_LOCK_INIT);
         
-        self.spinLock = OS_SPINLOCK_INIT;
+        self.spinLock = &(OS_UNFAIR_LOCK_INIT);
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessNotification:) name:@"JJLoginService_LoginSuccess" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:@"JJLoginServiceServerForceLogoutNotification" object:nil];
@@ -79,7 +79,7 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 
 - (BOOL)needUnloading
 {
-    BOOL need = ([self yzt_isEmpty:self.delegateList] && (0 == self.requestFinishCount));
+    BOOL need = ([self jj_isEmpty:self.delegateList] && (0 == self.requestFinishCount));
     if (need)
     {
         NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:self.recordExistBeginDate];
@@ -111,29 +111,29 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 
 - (void)addDelegate:(id<JJServiceDelegate>)delegate_
 {
-    [self yzt_beginLockDelegateListOperation];
+    [self jj_beginLockDelegateListOperation];
     
     [self.delegateList addObject:delegate_];
     
-    [self yzt_endLockDelegateListOperation];
+    [self jj_endLockDelegateListOperation];
 }
 
 - (void)removeDelegate:(id<JJServiceDelegate>)delegate_
 {
-    [self yzt_beginLockDelegateListOperation];
+    [self jj_beginLockDelegateListOperation];
     
     [self.delegateList removeObject:delegate_];
     
-    [self yzt_endLockDelegateListOperation];
+    [self jj_endLockDelegateListOperation];
 }
 
 - (void)removeAllDelegate
 {
-    [self yzt_beginLockDelegateListOperation];
+    [self jj_beginLockDelegateListOperation];
     
     self.delegateList = nil;
     
-    [self yzt_endLockDelegateListOperation];
+    [self jj_endLockDelegateListOperation];
 }
 
 - (id)featureSetWithFeatureSetName:(NSString *)featureSetName_
@@ -173,7 +173,7 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
          networkSuccessResponse:(void (^)(id object, id otherInfo))networkSuccessResponse_
             networkFailResponse:(void (^)(id error, id otherInfo))networkFailResponse_
 {
-    [self yzt_beginLockDelegateListOperation];
+    [self jj_beginLockDelegateListOperation];
     
     NSMutableArray *delegateListCopy = [NSMutableArray array];
     for (id<JJServiceDelegate> delegate in self.delegateList)
@@ -181,7 +181,7 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
         [delegateListCopy addObject:delegate];
     }
     
-    [self yzt_endLockDelegateListOperation];
+    [self jj_endLockDelegateListOperation];
     
     if (success_)
     {
@@ -269,7 +269,7 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 
 - (void)recordRequestFinishCount:(NSInteger)count_
 {
-    OSSpinLockLock(&_spinLock);
+    os_unfair_lock_lock(_spinLock);
     
     self.requestFinishCount = self.requestFinishCount + count_;
     
@@ -278,14 +278,14 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
         self.recordExistBeginDate = [NSDate date];
     }
     
-    OSSpinLockUnlock(&_spinLock);
+    os_unfair_lock_unlock(_spinLock);
 }
 
 - (void)saveCustomModel:(id<NSCoding>)model
           operationType:(NSString *)operationType
              allAccount:(BOOL)allAccount
 {
-    JJCustomRequest *request = [self yzt_customRequestWithOperationType:operationType allAccount:allAccount];
+    JJCustomRequest *request = [self jj_customRequestWithOperationType:operationType allAccount:allAccount];
     
     [request saveObjectToDiskCache:model];
 }
@@ -293,7 +293,7 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 - (void)removeCustomModelWithOperationType:(NSString *)operationType
                                 allAccount:(BOOL)allAccount
 {
-    JJCustomRequest *request = [self yzt_customRequestWithOperationType:operationType allAccount:allAccount];
+    JJCustomRequest *request = [self jj_customRequestWithOperationType:operationType allAccount:allAccount];
     
     [request removeDiskCache];
 }
@@ -301,7 +301,7 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 - (id)customModelWithOperationType:(NSString *)operationType
                         allAccount:(BOOL)allAccount
 {
-    JJCustomRequest *request = [self yzt_customRequestWithOperationType:operationType allAccount:allAccount];
+    JJCustomRequest *request = [self jj_customRequestWithOperationType:operationType allAccount:allAccount];
     
     id model = [request cacheModel];
     return model;
@@ -321,17 +321,17 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 
 #pragma mark - private
 
-- (void)yzt_beginLockDelegateListOperation
+- (void)jj_beginLockDelegateListOperation
 {
-    OSSpinLockLock(&_delegateListOperationLock);
+    os_unfair_lock_lock(_delegateListOperationLock);
 }
 
-- (void)yzt_endLockDelegateListOperation
+- (void)jj_endLockDelegateListOperation
 {
-    OSSpinLockUnlock(&_delegateListOperationLock);
+    os_unfair_lock_unlock(_delegateListOperationLock);
 }
 
-- (BOOL)yzt_isEmpty:(NSHashTable *)hashTable
+- (BOOL)jj_isEmpty:(NSHashTable *)hashTable
 {
     NSEnumerator *enumerator = [hashTable objectEnumerator];
     id value;
@@ -344,10 +344,10 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
     return YES;
 }
 
-- (JJCustomRequest *)yzt_customRequestWithOperationType:(NSString *)operationType
+- (JJCustomRequest *)jj_customRequestWithOperationType:(NSString *)operationType
                                               allAccount:(BOOL)allAccount
 {
-    JJCustomRequest *request = [[JJCustomRequest alloc] initWithOperationType:operationType parameters:nil modelClass:nil isSaveToMemory:NO isSaveToDisk:YES];
+    JJCustomRequest *request = [[JJCustomRequest alloc] initWithIdentity:operationType parameters:nil modelClass:nil isSaveToMemory:NO isSaveToDisk:YES];
     if (allAccount) {
         request.sensitiveDataForSavedFileName = @"";
     }

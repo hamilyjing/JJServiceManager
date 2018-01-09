@@ -70,7 +70,7 @@
 
 #pragma mark - private
 
-- (void)yzt_resetObject {
+- (void)jj_resetObject {
     
     [[NSNotificationCenter defaultCenter]removeObserver:self];
      self.requestCount = 0;
@@ -100,7 +100,7 @@
         || stop)
     {
         self.completion(!stop, self.responseContent);
-        [self yzt_resetObject];
+        [self jj_resetObject];
 
     }
     else
@@ -109,7 +109,7 @@
         BOOL needToCallBack = request(self.responseContent);
         if (needToCallBack) {
              self.completion(NO, self.responseContent);
-            [self yzt_resetObject];
+            [self jj_resetObject];
 
         }
     }

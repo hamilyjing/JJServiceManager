@@ -7,27 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33367E32465E5514208FA7DD /* Pods_JJServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83284AD5EE11A8E604D30D93 /* Pods_JJServiceManager.framework */; };
 		AB07123520045E3000559041 /* JJServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB07122B20045E2F00559041 /* JJServiceManager.framework */; };
 		AB07123A20045E3000559041 /* JJServiceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB07123920045E3000559041 /* JJServiceManagerTests.m */; };
-		AB96E8242004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh in Resources */ = {isa = PBXBuildFile; fileRef = AB96E80C2004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh */; };
-		AB96E8252004609C001F1B1F /* YZTServiceNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E80E2004609C001F1B1F /* YZTServiceNotification.m */; };
-		AB96E8262004609C001F1B1F /* YZTServiceNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E80F2004609C001F1B1F /* YZTServiceNotification.h */; };
-		AB96E8272004609C001F1B1F /* YZTCustomRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8112004609C001F1B1F /* YZTCustomRequest.m */; };
-		AB96E8282004609C001F1B1F /* YZTCustomRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8122004609C001F1B1F /* YZTCustomRequest.h */; };
-		AB96E8292004609C001F1B1F /* JJServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8132004609C001F1B1F /* JJServiceManager.h */; };
-		AB96E82A2004609C001F1B1F /* JJServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8152004609C001F1B1F /* JJServiceFactory.h */; };
+		AB96E8252004609C001F1B1F /* JJServiceNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E80E2004609C001F1B1F /* JJServiceNotification.m */; };
+		AB96E8262004609C001F1B1F /* JJServiceNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E80F2004609C001F1B1F /* JJServiceNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB96E8272004609C001F1B1F /* JJCustomRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8112004609C001F1B1F /* JJCustomRequest.m */; };
+		AB96E8282004609C001F1B1F /* JJCustomRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8122004609C001F1B1F /* JJCustomRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB96E8292004609C001F1B1F /* JJServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8132004609C001F1B1F /* JJServiceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB96E82A2004609C001F1B1F /* JJServiceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8152004609C001F1B1F /* JJServiceFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB96E82B2004609C001F1B1F /* JJServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8162004609C001F1B1F /* JJServiceFactory.m */; };
-		AB96E82C2004609C001F1B1F /* JJFeatureSet.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8182004609C001F1B1F /* JJFeatureSet.h */; };
+		AB96E82C2004609C001F1B1F /* JJFeatureSet.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8182004609C001F1B1F /* JJFeatureSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB96E82D2004609C001F1B1F /* JJFeatureSet.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8192004609C001F1B1F /* JJFeatureSet.m */; };
 		AB96E82E2004609C001F1B1F /* JJServiceBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E81B2004609C001F1B1F /* JJServiceBatchRequest.m */; };
-		AB96E82F2004609C001F1B1F /* JJService.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E81C2004609C001F1B1F /* JJService.h */; };
-		AB96E8302004609C001F1B1F /* JJService+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E81D2004609C001F1B1F /* JJService+Private.h */; };
-		AB96E8312004609C001F1B1F /* JJServiceChainRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E81E2004609C001F1B1F /* JJServiceChainRequest.h */; };
+		AB96E82F2004609C001F1B1F /* JJService.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E81C2004609C001F1B1F /* JJService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB96E8312004609C001F1B1F /* JJServiceChainRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E81E2004609C001F1B1F /* JJServiceChainRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB96E8322004609C001F1B1F /* JJService.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E81F2004609C001F1B1F /* JJService.m */; };
-		AB96E8332004609C001F1B1F /* JJServiceBatchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8202004609C001F1B1F /* JJServiceBatchRequest.h */; };
-		AB96E8342004609C001F1B1F /* JJService+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8212004609C001F1B1F /* JJService+Private.m */; };
+		AB96E8332004609C001F1B1F /* JJServiceBatchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E8202004609C001F1B1F /* JJServiceBatchRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB96E8352004609C001F1B1F /* JJServiceChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8222004609C001F1B1F /* JJServiceChainRequest.m */; };
-		AB96E8362004609C001F1B1F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB96E8232004609C001F1B1F /* Info.plist */; };
+		ABC87E4F20049BAB00788EF8 /* JJBaseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = ABC87E4D20049BAB00788EF8 /* JJBaseRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABC87E5020049BAB00788EF8 /* JJBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC87E4E20049BAB00788EF8 /* JJBaseRequest.m */; };
+		ABC87E6A20049C2D00788EF8 /* JJNSMutableDictionaryHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = ABC87E5820049C2C00788EF8 /* JJNSMutableDictionaryHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABC87E6B20049C2D00788EF8 /* JJNSStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC87E5920049C2C00788EF8 /* JJNSStringHelper.m */; };
+		ABC87E7220049C2D00788EF8 /* JJNSMutableDictionaryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC87E6020049C2C00788EF8 /* JJNSMutableDictionaryHelper.m */; };
+		ABC87E7420049C2D00788EF8 /* JJNSStringHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = ABC87E6220049C2C00788EF8 /* JJNSStringHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABC87E7820049FA700788EF8 /* JJEncryptUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = ABC87E7620049FA700788EF8 /* JJEncryptUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABC87E7920049FA700788EF8 /* JJEncryptUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC87E7720049FA700788EF8 /* JJEncryptUtil.m */; };
+		ABC87E7C2004A04B00788EF8 /* JJBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC87E7A2004A04A00788EF8 /* JJBase64.m */; };
+		ABC87E7D2004A04B00788EF8 /* JJBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = ABC87E7B2004A04A00788EF8 /* JJBase64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,15 +48,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7BF30DD8D95A3889E1F48907 /* Pods-JJServiceManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJServiceManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJServiceManager/Pods-JJServiceManager.release.xcconfig"; sourceTree = "<group>"; };
+		83284AD5EE11A8E604D30D93 /* Pods_JJServiceManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJServiceManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB07122B20045E2F00559041 /* JJServiceManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JJServiceManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB07123420045E3000559041 /* JJServiceManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJServiceManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB07123920045E3000559041 /* JJServiceManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJServiceManagerTests.m; sourceTree = "<group>"; };
 		AB07123B20045E3000559041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB96E80C2004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = YZT_iOS_ServiceManager_AddPublicHeader.sh; sourceTree = "<group>"; };
-		AB96E80E2004609C001F1B1F /* YZTServiceNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZTServiceNotification.m; sourceTree = "<group>"; };
-		AB96E80F2004609C001F1B1F /* YZTServiceNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZTServiceNotification.h; sourceTree = "<group>"; };
-		AB96E8112004609C001F1B1F /* YZTCustomRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZTCustomRequest.m; sourceTree = "<group>"; };
-		AB96E8122004609C001F1B1F /* YZTCustomRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZTCustomRequest.h; sourceTree = "<group>"; };
+		AB96E80E2004609C001F1B1F /* JJServiceNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJServiceNotification.m; sourceTree = "<group>"; };
+		AB96E80F2004609C001F1B1F /* JJServiceNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceNotification.h; sourceTree = "<group>"; };
+		AB96E8112004609C001F1B1F /* JJCustomRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCustomRequest.m; sourceTree = "<group>"; };
+		AB96E8122004609C001F1B1F /* JJCustomRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCustomRequest.h; sourceTree = "<group>"; };
 		AB96E8132004609C001F1B1F /* JJServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceManager.h; sourceTree = "<group>"; };
 		AB96E8152004609C001F1B1F /* JJServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceFactory.h; sourceTree = "<group>"; };
 		AB96E8162004609C001F1B1F /* JJServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJServiceFactory.m; sourceTree = "<group>"; };
@@ -57,13 +65,22 @@
 		AB96E8192004609C001F1B1F /* JJFeatureSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJFeatureSet.m; sourceTree = "<group>"; };
 		AB96E81B2004609C001F1B1F /* JJServiceBatchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJServiceBatchRequest.m; sourceTree = "<group>"; };
 		AB96E81C2004609C001F1B1F /* JJService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJService.h; sourceTree = "<group>"; };
-		AB96E81D2004609C001F1B1F /* JJService+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JJService+Private.h"; sourceTree = "<group>"; };
 		AB96E81E2004609C001F1B1F /* JJServiceChainRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceChainRequest.h; sourceTree = "<group>"; };
 		AB96E81F2004609C001F1B1F /* JJService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJService.m; sourceTree = "<group>"; };
 		AB96E8202004609C001F1B1F /* JJServiceBatchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceBatchRequest.h; sourceTree = "<group>"; };
-		AB96E8212004609C001F1B1F /* JJService+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JJService+Private.m"; sourceTree = "<group>"; };
 		AB96E8222004609C001F1B1F /* JJServiceChainRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJServiceChainRequest.m; sourceTree = "<group>"; };
 		AB96E8232004609C001F1B1F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABC87E4D20049BAB00788EF8 /* JJBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJBaseRequest.h; sourceTree = "<group>"; };
+		ABC87E4E20049BAB00788EF8 /* JJBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJBaseRequest.m; sourceTree = "<group>"; };
+		ABC87E5820049C2C00788EF8 /* JJNSMutableDictionaryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJNSMutableDictionaryHelper.h; sourceTree = "<group>"; };
+		ABC87E5920049C2C00788EF8 /* JJNSStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJNSStringHelper.m; sourceTree = "<group>"; };
+		ABC87E6020049C2C00788EF8 /* JJNSMutableDictionaryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJNSMutableDictionaryHelper.m; sourceTree = "<group>"; };
+		ABC87E6220049C2C00788EF8 /* JJNSStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJNSStringHelper.h; sourceTree = "<group>"; };
+		ABC87E7620049FA700788EF8 /* JJEncryptUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJEncryptUtil.h; sourceTree = "<group>"; };
+		ABC87E7720049FA700788EF8 /* JJEncryptUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJEncryptUtil.m; sourceTree = "<group>"; };
+		ABC87E7A2004A04A00788EF8 /* JJBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJBase64.m; sourceTree = "<group>"; };
+		ABC87E7B2004A04A00788EF8 /* JJBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJBase64.h; sourceTree = "<group>"; };
+		C2121006409946F600ED93D8 /* Pods-JJServiceManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJServiceManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJServiceManager/Pods-JJServiceManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33367E32465E5514208FA7DD /* Pods_JJServiceManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,12 +103,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55966D2F2F6199B175F1954A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2121006409946F600ED93D8 /* Pods-JJServiceManager.debug.xcconfig */,
+				7BF30DD8D95A3889E1F48907 /* Pods-JJServiceManager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AB07122120045E2F00559041 = {
 			isa = PBXGroup;
 			children = (
 				AB96E80B2004609C001F1B1F /* JJServiceManager */,
 				AB07123820045E3000559041 /* JJServiceManagerTests */,
 				AB07122C20045E2F00559041 /* Products */,
+				55966D2F2F6199B175F1954A /* Pods */,
+				ABEC5B9314E6EABCA39CAE70 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,13 +145,13 @@
 			isa = PBXGroup;
 			children = (
 				AB96E8172004609C001F1B1F /* FeatureSet */,
+				ABC87E5120049C2C00788EF8 /* Helper */,
 				AB96E8232004609C001F1B1F /* Info.plist */,
 				AB96E8132004609C001F1B1F /* JJServiceManager.h */,
 				AB96E8102004609C001F1B1F /* Network */,
 				AB96E80D2004609C001F1B1F /* Notification */,
 				AB96E81A2004609C001F1B1F /* Service */,
 				AB96E8142004609C001F1B1F /* ServiceFactory */,
-				AB96E80C2004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh */,
 			);
 			path = JJServiceManager;
 			sourceTree = "<group>";
@@ -130,8 +159,8 @@
 		AB96E80D2004609C001F1B1F /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				AB96E80F2004609C001F1B1F /* YZTServiceNotification.h */,
-				AB96E80E2004609C001F1B1F /* YZTServiceNotification.m */,
+				AB96E80F2004609C001F1B1F /* JJServiceNotification.h */,
+				AB96E80E2004609C001F1B1F /* JJServiceNotification.m */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -139,8 +168,10 @@
 		AB96E8102004609C001F1B1F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				AB96E8122004609C001F1B1F /* YZTCustomRequest.h */,
-				AB96E8112004609C001F1B1F /* YZTCustomRequest.m */,
+				ABC87E4D20049BAB00788EF8 /* JJBaseRequest.h */,
+				ABC87E4E20049BAB00788EF8 /* JJBaseRequest.m */,
+				AB96E8122004609C001F1B1F /* JJCustomRequest.h */,
+				AB96E8112004609C001F1B1F /* JJCustomRequest.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -168,14 +199,35 @@
 			children = (
 				AB96E81C2004609C001F1B1F /* JJService.h */,
 				AB96E81F2004609C001F1B1F /* JJService.m */,
-				AB96E81D2004609C001F1B1F /* JJService+Private.h */,
-				AB96E8212004609C001F1B1F /* JJService+Private.m */,
 				AB96E8202004609C001F1B1F /* JJServiceBatchRequest.h */,
 				AB96E81B2004609C001F1B1F /* JJServiceBatchRequest.m */,
 				AB96E81E2004609C001F1B1F /* JJServiceChainRequest.h */,
 				AB96E8222004609C001F1B1F /* JJServiceChainRequest.m */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		ABC87E5120049C2C00788EF8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				ABC87E7B2004A04A00788EF8 /* JJBase64.h */,
+				ABC87E7A2004A04A00788EF8 /* JJBase64.m */,
+				ABC87E7620049FA700788EF8 /* JJEncryptUtil.h */,
+				ABC87E7720049FA700788EF8 /* JJEncryptUtil.m */,
+				ABC87E5820049C2C00788EF8 /* JJNSMutableDictionaryHelper.h */,
+				ABC87E6020049C2C00788EF8 /* JJNSMutableDictionaryHelper.m */,
+				ABC87E6220049C2C00788EF8 /* JJNSStringHelper.h */,
+				ABC87E5920049C2C00788EF8 /* JJNSStringHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		ABEC5B9314E6EABCA39CAE70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83284AD5EE11A8E604D30D93 /* Pods_JJServiceManager.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,12 +240,16 @@
 				AB96E8332004609C001F1B1F /* JJServiceBatchRequest.h in Headers */,
 				AB96E82C2004609C001F1B1F /* JJFeatureSet.h in Headers */,
 				AB96E8292004609C001F1B1F /* JJServiceManager.h in Headers */,
+				ABC87E7820049FA700788EF8 /* JJEncryptUtil.h in Headers */,
 				AB96E8312004609C001F1B1F /* JJServiceChainRequest.h in Headers */,
+				ABC87E7D2004A04B00788EF8 /* JJBase64.h in Headers */,
 				AB96E82F2004609C001F1B1F /* JJService.h in Headers */,
+				ABC87E4F20049BAB00788EF8 /* JJBaseRequest.h in Headers */,
 				AB96E82A2004609C001F1B1F /* JJServiceFactory.h in Headers */,
-				AB96E8262004609C001F1B1F /* YZTServiceNotification.h in Headers */,
-				AB96E8282004609C001F1B1F /* YZTCustomRequest.h in Headers */,
-				AB96E8302004609C001F1B1F /* JJService+Private.h in Headers */,
+				AB96E8262004609C001F1B1F /* JJServiceNotification.h in Headers */,
+				AB96E8282004609C001F1B1F /* JJCustomRequest.h in Headers */,
+				ABC87E6A20049C2D00788EF8 /* JJNSMutableDictionaryHelper.h in Headers */,
+				ABC87E7420049C2D00788EF8 /* JJNSStringHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,10 +260,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB07123F20045E3000559041 /* Build configuration list for PBXNativeTarget "JJServiceManager" */;
 			buildPhases = (
+				01EA33201EACF00AC9AE7B08 /* [CP] Check Pods Manifest.lock */,
 				AB07122620045E2F00559041 /* Sources */,
 				AB07122720045E2F00559041 /* Frameworks */,
 				AB07122820045E2F00559041 /* Headers */,
 				AB07122920045E2F00559041 /* Resources */,
+				D2625C4B61EF38D50A99B439 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -278,8 +336,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB96E8362004609C001F1B1F /* Info.plist in Resources */,
-				AB96E8242004609C001F1B1F /* YZT_iOS_ServiceManager_AddPublicHeader.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,19 +348,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		01EA33201EACF00AC9AE7B08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JJServiceManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2625C4B61EF38D50A99B439 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJServiceManager/Pods-JJServiceManager-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB07122620045E2F00559041 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABC87E7920049FA700788EF8 /* JJEncryptUtil.m in Sources */,
+				ABC87E5020049BAB00788EF8 /* JJBaseRequest.m in Sources */,
 				AB96E82B2004609C001F1B1F /* JJServiceFactory.m in Sources */,
 				AB96E82D2004609C001F1B1F /* JJFeatureSet.m in Sources */,
 				AB96E82E2004609C001F1B1F /* JJServiceBatchRequest.m in Sources */,
-				AB96E8342004609C001F1B1F /* JJService+Private.m in Sources */,
+				ABC87E6B20049C2D00788EF8 /* JJNSStringHelper.m in Sources */,
+				ABC87E7220049C2D00788EF8 /* JJNSMutableDictionaryHelper.m in Sources */,
 				AB96E8322004609C001F1B1F /* JJService.m in Sources */,
-				AB96E8272004609C001F1B1F /* YZTCustomRequest.m in Sources */,
-				AB96E8252004609C001F1B1F /* YZTServiceNotification.m in Sources */,
+				AB96E8272004609C001F1B1F /* JJCustomRequest.m in Sources */,
+				AB96E8252004609C001F1B1F /* JJServiceNotification.m in Sources */,
 				AB96E8352004609C001F1B1F /* JJServiceChainRequest.m in Sources */,
+				ABC87E7C2004A04B00788EF8 /* JJBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +535,7 @@
 		};
 		AB07124020045E3000559041 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2121006409946F600ED93D8 /* Pods-JJServiceManager.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +555,7 @@
 		};
 		AB07124120045E3000559041 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BF30DD8D95A3889E1F48907 /* Pods-JJServiceManager.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
