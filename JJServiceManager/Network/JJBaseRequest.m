@@ -81,6 +81,10 @@ static long g_networkRequestIndex = 1;
     }
 }
 
+- (YTKResponseSerializerType)responseSerializerType {
+    return YTKResponseSerializerTypeHTTP;
+}
+
 #pragma mark - public
 
 - (id)cacheModel
