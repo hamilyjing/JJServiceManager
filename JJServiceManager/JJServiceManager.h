@@ -12,7 +12,7 @@ FOUNDATION_EXPORT const unsigned char JJServiceManagerVersionString[];
 #import <JJServiceManager/JJServiceNotification.h>
 #import <JJServiceManager/JJBaseRequest.h>
 #import <JJServiceManager/JJCustomRequest.h>
-#import <JJServiceManager/JJServiceManager.h>
+#import <JJServiceManager/JJBaseModel.h>
 #import <JJServiceManager/JJServiceFactory.h>
 #import <JJServiceManager/JJFeatureSet.h>
 #import <JJServiceManager/JJServiceBatchRequest.h>
@@ -28,7 +28,7 @@ FOUNDATION_EXPORT const unsigned char JJServiceManagerVersionString[];
 #import "JJServiceNotification.h"
 #import "JJBaseRequest.h"
 #import "JJCustomRequest.h"
-#import "JJServiceManager.h"
+#import "JJBaseModel.h"
 #import "JJServiceFactory.h"
 #import "JJFeatureSet.h"
 #import "JJServiceBatchRequest.h"

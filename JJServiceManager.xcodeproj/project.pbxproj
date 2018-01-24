@@ -10,7 +10,7 @@
 		33367E32465E5514208FA7DD /* Pods_JJServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83284AD5EE11A8E604D30D93 /* Pods_JJServiceManager.framework */; };
 		AB07123520045E3000559041 /* JJServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB07122B20045E2F00559041 /* JJServiceManager.framework */; };
 		AB07123A20045E3000559041 /* JJServiceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB07123920045E3000559041 /* JJServiceManagerTests.m */; };
-		AB72551B201835CD005FE626 /* JJBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = AB725519201835CD005FE626 /* JJBaseModel.h */; };
+		AB72551B201835CD005FE626 /* JJBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = AB725519201835CD005FE626 /* JJBaseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB72551C201835CD005FE626 /* JJBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB72551A201835CD005FE626 /* JJBaseModel.m */; };
 		AB96E8252004609C001F1B1F /* JJServiceNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E80E2004609C001F1B1F /* JJServiceNotification.m */; };
 		AB96E8262004609C001F1B1F /* JJServiceNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E80F2004609C001F1B1F /* JJServiceNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -252,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB96E8332004609C001F1B1F /* JJServiceBatchRequest.h in Headers */,
-				AB72551B201835CD005FE626 /* JJBaseModel.h in Headers */,
 				AB96E82C2004609C001F1B1F /* JJFeatureSet.h in Headers */,
 				AB96E8292004609C001F1B1F /* JJServiceManager.h in Headers */,
 				ABC87E7820049FA700788EF8 /* JJEncryptUtil.h in Headers */,
@@ -264,6 +263,7 @@
 				AB96E8262004609C001F1B1F /* JJServiceNotification.h in Headers */,
 				AB96E8282004609C001F1B1F /* JJCustomRequest.h in Headers */,
 				ABC87E6A20049C2D00788EF8 /* JJNSMutableDictionaryHelper.h in Headers */,
+				AB72551B201835CD005FE626 /* JJBaseModel.h in Headers */,
 				ABC87E7420049C2D00788EF8 /* JJNSStringHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
