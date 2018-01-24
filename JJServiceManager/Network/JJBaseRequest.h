@@ -30,8 +30,10 @@
 
 @property (nonatomic, copy) id (^operation)(id newObject, id oldObject);
 
-@property (nonatomic, copy) void (^networkSuccessResponse)(id object, id otherInfo);
-@property (nonatomic, copy) void (^networkFailResponse)(id error, id otherInfo);
+@property (nonatomic, copy) void (^networkSuccessResponse)(id object, NSDictionary *otherInfo);
+@property (nonatomic, copy) void (^networkFailResponse)(id error, NSDictionary *otherInfo);
+
+- (NSString *)filterResponseString:(NSString *)responseString;
 
 // get cache
 - (id)cacheModel;
@@ -59,7 +61,5 @@
 - (NSString *)savedFilePath;
 - (NSString *)savedFileDirectory;
 - (NSString *)savedFileName;
-
-- (NSString *)filterResponseString:(NSString *)responseString;
 
 @end

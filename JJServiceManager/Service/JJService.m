@@ -15,13 +15,6 @@
 #import "JJCustomRequest.h"
 #import "JJNSMutableDictionaryHelper.h"
 
-// login
-extern NSString *JJLoginServiceLoginSuccessNotification;       //JJLoginService_LoginSuccess
-
-// logout
-extern NSString *JJLoginServiceServerForceLogoutNotification;  //JJLoginServiceServerForceLogoutNotification
-extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_logOut
-
 @interface JJService ()
 
 @property (nonatomic, strong) NSMutableDictionary *featureSetContainer;
@@ -57,9 +50,8 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
         
         self.spinLock = &(OS_UNFAIR_LOCK_INIT);
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessNotification:) name:@"JJLoginService_LoginSuccess" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:@"JJLoginServiceServerForceLogoutNotification" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:@"JJLoginService_logOut" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessNotification:) name:JJServiceNotificationNameLoginSuccess object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:JJServiceNotificationNameLogOut object:nil];
     }
     return self;
 }
@@ -91,22 +83,18 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 
 - (void)serviceWillLoad
 {
-    
 }
 
 - (void)serviceDidLoad
 {
-    
 }
 
 - (void)serviceWillUnload
 {
-    
 }
 
 - (void)serviceDidUnload
 {
-    
 }
 
 - (void)addDelegate:(id<JJServiceDelegate>)delegate_
@@ -165,11 +153,11 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
     [featureSet featureSetDidUnload];
 }
 
-- (void)serviceResponseCallBack:(NSString *)requestType_
+- (void)serviceResponseCallBack:(NSString *)identity_
                       parameter:(id)parameter_
                         success:(BOOL)success_
                          object:(id)object_
-                      otherInfo:(id)otherInfo_
+                      otherInfo:(NSDictionary *)otherInfo_
          networkSuccessResponse:(void (^)(id object, id otherInfo))networkSuccessResponse_
             networkFailResponse:(void (^)(id error, id otherInfo))networkFailResponse_
 {
@@ -189,12 +177,13 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
         {
             networkSuccessResponse_(object_, otherInfo_);
         }
+        
         for (id<JJServiceDelegate> delegate in delegateListCopy)
         {
-            if ([delegate respondsToSelector:@selector(networkSuccessResponse:requestType:parameter:object:otherInfo:)])
+            if ([delegate respondsToSelector:@selector(networkSuccessResponse:identity:parameter:object:otherInfo:)])
             {
                 [delegate networkSuccessResponse:self
-                                     requestType:requestType_
+                                        identity:identity_
                                        parameter:parameter_
                                           object:object_
                                        otherInfo:otherInfo_];
@@ -210,10 +199,10 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
         
         for (id<JJServiceDelegate> delegate in delegateListCopy)
         {
-            if ([delegate respondsToSelector:@selector(networkFailResponse:requestType:parameter:error:otherInfo:)])
+            if ([delegate respondsToSelector:@selector(networkFailResponse:identity:parameter:error:otherInfo:)])
             {
                 [delegate networkFailResponse:self
-                                  requestType:requestType_
+                                     identity:identity_
                                     parameter:parameter_
                                         error:object_
                                     otherInfo:otherInfo_];
@@ -221,7 +210,7 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
         }
     }
     
-    [self postServiceResponseNotification:requestType_
+    [self postServiceResponseNotification:identity_
                                 parameter:parameter_
                                   success:success_
                                    object:object_
@@ -230,13 +219,13 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
     [self recordRequestFinishCount:1];
 }
 
-- (void)postServiceResponseNotification:(NSString *)requestType_
+- (void)postServiceResponseNotification:(NSString *)identity_
                               parameter:(id)parameter_
                                 success:(BOOL)success_
                                  object:(id)object_
-                              otherInfo:(id)otherInfo_
+                              otherInfo:(NSDictionary *)otherInfo_
 {
-    NSString *notificationName = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([self class]), requestType_];
+    NSString *notificationName = [NSString stringWithFormat:@"%@_%@", NSStringFromClass([self class]), identity_];
     
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     [JJNSMutableDictionaryHelper mDictionary:userInfo setObj:self forKey:JJServiceNotificationKeyService];
@@ -247,7 +236,7 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc postNotificationName:notificationName
-                      object:nil
+                      object:self
                     userInfo:userInfo];
 }
 
@@ -282,26 +271,26 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 }
 
 - (void)saveCustomModel:(id<NSCoding>)model
-          operationType:(NSString *)operationType
+               identity:(NSString *)identity
              allAccount:(BOOL)allAccount
 {
-    JJCustomRequest *request = [self jj_customRequestWithOperationType:operationType allAccount:allAccount];
+    JJCustomRequest *request = [self jj_customRequestWithidentity:identity allAccount:allAccount];
     
     [request saveObjectToDiskCache:model];
 }
 
-- (void)removeCustomModelWithOperationType:(NSString *)operationType
-                                allAccount:(BOOL)allAccount
+- (void)removeCustomModelWithidentity:(NSString *)identity
+                           allAccount:(BOOL)allAccount
 {
-    JJCustomRequest *request = [self jj_customRequestWithOperationType:operationType allAccount:allAccount];
+    JJCustomRequest *request = [self jj_customRequestWithidentity:identity allAccount:allAccount];
     
     [request removeDiskCache];
 }
 
-- (id)customModelWithOperationType:(NSString *)operationType
-                        allAccount:(BOOL)allAccount
+- (id)customModelWithidentity:(NSString *)identity
+                   allAccount:(BOOL)allAccount
 {
-    JJCustomRequest *request = [self jj_customRequestWithOperationType:operationType allAccount:allAccount];
+    JJCustomRequest *request = [self jj_customRequestWithidentity:identity allAccount:allAccount];
     
     id model = [request cacheModel];
     return model;
@@ -344,10 +333,10 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
     return YES;
 }
 
-- (JJCustomRequest *)jj_customRequestWithOperationType:(NSString *)operationType
-                                              allAccount:(BOOL)allAccount
+- (JJCustomRequest *)jj_customRequestWithidentity:(NSString *)identity
+                                       allAccount:(BOOL)allAccount
 {
-    JJCustomRequest *request = [[JJCustomRequest alloc] initWithIdentity:operationType parameters:nil modelClass:nil isSaveToMemory:NO isSaveToDisk:YES];
+    JJCustomRequest *request = [[JJCustomRequest alloc] initWithIdentity:identity parameters:nil modelClass:nil isSaveToMemory:NO isSaveToDisk:YES];
     if (allAccount) {
         request.sensitiveDataForSavedFileName = @"";
     }
@@ -382,3 +371,4 @@ extern NSString *JJLoginServiceLogOutNotification;             //JJLoginService_
 }
 
 @end
+

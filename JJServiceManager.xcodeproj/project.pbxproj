@@ -10,6 +10,8 @@
 		33367E32465E5514208FA7DD /* Pods_JJServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83284AD5EE11A8E604D30D93 /* Pods_JJServiceManager.framework */; };
 		AB07123520045E3000559041 /* JJServiceManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB07122B20045E2F00559041 /* JJServiceManager.framework */; };
 		AB07123A20045E3000559041 /* JJServiceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB07123920045E3000559041 /* JJServiceManagerTests.m */; };
+		AB72551B201835CD005FE626 /* JJBaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = AB725519201835CD005FE626 /* JJBaseModel.h */; };
+		AB72551C201835CD005FE626 /* JJBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB72551A201835CD005FE626 /* JJBaseModel.m */; };
 		AB96E8252004609C001F1B1F /* JJServiceNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E80E2004609C001F1B1F /* JJServiceNotification.m */; };
 		AB96E8262004609C001F1B1F /* JJServiceNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = AB96E80F2004609C001F1B1F /* JJServiceNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB96E8272004609C001F1B1F /* JJCustomRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB96E8112004609C001F1B1F /* JJCustomRequest.m */; };
@@ -54,6 +56,8 @@
 		AB07123420045E3000559041 /* JJServiceManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJServiceManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB07123920045E3000559041 /* JJServiceManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJServiceManagerTests.m; sourceTree = "<group>"; };
 		AB07123B20045E3000559041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB725519201835CD005FE626 /* JJBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJBaseModel.h; sourceTree = "<group>"; };
+		AB72551A201835CD005FE626 /* JJBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJBaseModel.m; sourceTree = "<group>"; };
 		AB96E80E2004609C001F1B1F /* JJServiceNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJServiceNotification.m; sourceTree = "<group>"; };
 		AB96E80F2004609C001F1B1F /* JJServiceNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJServiceNotification.h; sourceTree = "<group>"; };
 		AB96E8112004609C001F1B1F /* JJCustomRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCustomRequest.m; sourceTree = "<group>"; };
@@ -141,6 +145,15 @@
 			path = JJServiceManagerTests;
 			sourceTree = "<group>";
 		};
+		AB72551820183578005FE626 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB725519201835CD005FE626 /* JJBaseModel.h */,
+				AB72551A201835CD005FE626 /* JJBaseModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AB96E80B2004609C001F1B1F /* JJServiceManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +161,7 @@
 				ABC87E5120049C2C00788EF8 /* Helper */,
 				AB96E8232004609C001F1B1F /* Info.plist */,
 				AB96E8132004609C001F1B1F /* JJServiceManager.h */,
+				AB72551820183578005FE626 /* Model */,
 				AB96E8102004609C001F1B1F /* Network */,
 				AB96E80D2004609C001F1B1F /* Notification */,
 				AB96E81A2004609C001F1B1F /* Service */,
@@ -238,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB96E8332004609C001F1B1F /* JJServiceBatchRequest.h in Headers */,
+				AB72551B201835CD005FE626 /* JJBaseModel.h in Headers */,
 				AB96E82C2004609C001F1B1F /* JJFeatureSet.h in Headers */,
 				AB96E8292004609C001F1B1F /* JJServiceManager.h in Headers */,
 				ABC87E7820049FA700788EF8 /* JJEncryptUtil.h in Headers */,
@@ -395,6 +410,7 @@
 				AB96E82D2004609C001F1B1F /* JJFeatureSet.m in Sources */,
 				AB96E82E2004609C001F1B1F /* JJServiceBatchRequest.m in Sources */,
 				ABC87E6B20049C2D00788EF8 /* JJNSStringHelper.m in Sources */,
+				AB72551C201835CD005FE626 /* JJBaseModel.m in Sources */,
 				ABC87E7220049C2D00788EF8 /* JJNSMutableDictionaryHelper.m in Sources */,
 				AB96E8322004609C001F1B1F /* JJService.m in Sources */,
 				AB96E8272004609C001F1B1F /* JJCustomRequest.m in Sources */,

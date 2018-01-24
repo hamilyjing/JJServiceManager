@@ -30,57 +30,48 @@
 - (void)featureSetWillUnload;
 - (void)featureSetDidUnload;
 
+- (void)actionAfterLogin;
+- (void)actionAfterLogout;
+
 - (void)startRequest:(JJBaseRequest *)request
-         requestType:(NSString *)requestType
+            identity:(NSString *)identity
            parameter:(id)parameter
-           otherInfo:(id)otherInfo
+           otherInfo:(NSDictionary *)otherInfo
        successAction:(void (^)(id object, JJBaseRequest *request))successAction
           failAction:(void (^)(NSError *error, JJBaseRequest *request))failAction;
 
 - (void)startRequest:(JJBaseRequest *)request
-         requestType:(NSString *)requestType
+            identity:(NSString *)identity
            parameter:(id)parameter
-           otherInfo:(id)otherInfo;
+           otherInfo:(NSDictionary *)otherInfo;
 
-- (void)actionAfterLogin;
-- (void)actionAfterLogout;
+- (void)startRequest:(JJBaseRequest *)request
+           otherInfo:(NSDictionary *)otherInfo
+       successAction:(void (^)(id object, JJBaseRequest *request))successAction
+          failAction:(void (^)(NSError *error, JJBaseRequest *request))failAction;
 
-#pragma mark - GP
-
-- (void)startGPRequest:(JJBaseRequest *)request
-             otherInfo:(id)otherInfo
-         successAction:(void (^)(id object, JJBaseRequest *request))successAction
-            failAction:(void (^)(NSError *error, JJBaseRequest *request))failAction;
-
-- (void)startGPRequest:(JJBaseRequest *)request
-             otherInfo:(id)otherInfo;
+- (void)startRequest:(JJBaseRequest *)request
+           otherInfo:(NSDictionary *)otherInfo;
 
 - (id)cacheModelWithParameters:(NSDictionary *)parameters
                   requestClass:(Class)requestClass
-                   requestType:(NSString *)requestType
+                      identity:(NSString *)identity
                     modelClass:(Class)modelClass
                   isSaveToDisk:(BOOL)isSaveToDisk;
-
-- (JJBaseRequest *)requestWithParameters:(NSDictionary *)parameters
-                 requestClass:(Class)requestClass
-                  requestType:(NSString *)requestType
-                   modelClass:(Class)modelClass
-                 isSaveToDisk:(BOOL)isSaveToDisk
-       networkSuccessResponse:(void(^)(id object, id otherinfo))networkSuccessResponse
-          networkFailResponse:(void (^)(NSError *error, id otherinfo))networkFailResponse;
-
-- (JJBaseRequest *)requestWithParameters:(NSDictionary *)parameters_
-                           requestClass:(Class)requestClass_
-                            requestType:(NSString *)requestType_
-                             modelClass:(Class)modelClass_
-                           isSaveToDisk:(BOOL)isSaveToDisk_
-                       isEncryptRequest:(BOOL)isEncryptRequest_
-                 networkSuccessResponse:(void(^)(id object, id otherinfo))networkSuccessResponse_
-                    networkFailResponse:(void (^)(NSError *error, id otherinfo))networkFailResponse_;
 
 - (void)removeCacheModelWithParameters:(NSDictionary *)parameters
-                  requestClass:(Class)requestClass
-                   requestType:(NSString *)requestType
-                    modelClass:(Class)modelClass
-                  isSaveToDisk:(BOOL)isSaveToDisk;
+                          requestClass:(Class)requestClass
+                              identity:(NSString *)identity
+                            modelClass:(Class)modelClass
+                          isSaveToDisk:(BOOL)isSaveToDisk;
+
+- (JJBaseRequest *)requestWithParameters:(NSDictionary *)parameters
+                            requestClass:(Class)requestClass
+                                identity:(NSString *)identity
+                              modelClass:(Class)modelClass
+                            isSaveToDisk:(BOOL)isSaveToDisk
+                  networkSuccessResponse:(void(^)(id object, id otherinfo))networkSuccessResponse
+                     networkFailResponse:(void (^)(NSError *error, id otherinfo))networkFailResponse;
+
 @end
+

@@ -27,11 +27,6 @@
                                                 options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
                                                   error:&error];
     
-    if (error)
-    {
-//        NSAssert(NO, @"From data to JSON object error: %@", error);
-    }
-    
     return result;
 }
 

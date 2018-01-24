@@ -8,9 +8,12 @@
 
 #import "JJServiceNotification.h"
 
-NSString *JJServiceNotificationKeyService = @"service";
-NSString *JJServiceNotificationKeyParameter = @"parameter";
-NSString *JJServiceNotificationKeySuccess = @"success";
-NSString *JJServiceNotificationKeyObject = @"object";
-NSString *JJServiceNotificationKeyOtherInfo = @"otherInfo";
-NSString *JJServiceNotificationKeyOtherInfoResponseStringKey = @"responseString";
+NSString *JJServiceNotificationKeyService = @"jjservice";
+NSString *JJServiceNotificationKeyParameter = @"jjparameter";
+NSString *JJServiceNotificationKeySuccess = @"jjsuccess";
+NSString *JJServiceNotificationKeyObject = @"jjobject";
+NSString *JJServiceNotificationKeyOtherInfo = @"jjotherInfo";
+NSString *JJServiceNotificationKeyOtherInfoResponseStringKey = @"jjresponseString";
+
+NSString *JJServiceNotificationNameLoginSuccess = @"jjloginSuccess";
+NSString *JJServiceNotificationNameLogOut = @"jjlogout";

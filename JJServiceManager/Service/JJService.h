@@ -16,16 +16,16 @@
 @optional
 
 - (void)networkSuccessResponse:(JJService *)service
-                   requestType:(NSString *)requestType
+                      identity:(NSString *)identity
                      parameter:(id)parameter
                         object:(id)object
-                     otherInfo:(id)otherInfo;
+                     otherInfo:(NSDictionary *)otherInfo;
 
 - (void)networkFailResponse:(JJService *)service
-                requestType:(NSString *)requestType
+                   identity:(NSString *)identity
                   parameter:(id)parameter
                       error:(id)error
-                  otherInfo:(id)otherInfo;
+                  otherInfo:(NSDictionary *)otherInfo;
 
 @end
 
@@ -61,19 +61,19 @@
 
 - (void)unloadFeatureSetWithFeatureSetName:(NSString *)featureSetName;
 
-- (void)serviceResponseCallBack:(NSString *)requestType
+- (void)serviceResponseCallBack:(NSString *)identity
                       parameter:(id)parameter
                         success:(BOOL)success
                          object:(id)object
-                      otherInfo:(id)otherInfo
+                      otherInfo:(NSDictionary *)otherInfo
          networkSuccessResponse:(void (^)(id object, id otherInfo))networkSuccessResponse
             networkFailResponse:(void (^)(id error, id otherInfo))networkFailResponse;
 
-- (void)postServiceResponseNotification:(NSString *)requestType
+- (void)postServiceResponseNotification:(NSString *)identity
                               parameter:(id)parameter
                                 success:(BOOL)success
                                  object:(id)object
-                              otherInfo:(id)otherInfo;
+                              otherInfo:(NSDictionary *)otherInfo;
 
 - (void)actionAfterLogin;
 - (void)actionAfterLogout;
@@ -81,12 +81,12 @@
 - (void)recordRequestFinishCount:(NSInteger)count;
 
 - (void)saveCustomModel:(id<NSCoding>)model
-          operationType:(NSString *)operationType
+               identity:(NSString *)identity
              allAccount:(BOOL)allAccount;
-- (void)removeCustomModelWithOperationType:(NSString *)operationType
-                                allAccount:(BOOL)allAccount;
-- (id)customModelWithOperationType:(NSString *)operationType
-                        allAccount:(BOOL)allAccount;
+- (void)removeCustomModelWithidentity:(NSString *)identity
+                           allAccount:(BOOL)allAccount;
+- (id)customModelWithidentity:(NSString *)identity
+                   allAccount:(BOOL)allAccount;
 
 @end
 

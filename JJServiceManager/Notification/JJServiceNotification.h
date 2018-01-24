@@ -14,3 +14,6 @@ extern NSString *JJServiceNotificationKeySuccess;
 extern NSString *JJServiceNotificationKeyObject;
 extern NSString *JJServiceNotificationKeyOtherInfo;
 extern NSString *JJServiceNotificationKeyOtherInfoResponseStringKey;
+
+extern NSString *JJServiceNotificationNameLoginSuccess;
+extern NSString *JJServiceNotificationNameLogOut;
