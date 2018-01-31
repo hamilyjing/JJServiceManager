@@ -15,6 +15,9 @@
 
 @property (nonatomic, assign) NSTimeInterval checkIntervalOfUnloadingService;
 
+@property (nonatomic, strong) NSArray *loginSuccessNotificationNameArray;
+@property (nonatomic, strong) NSArray *logoutNotificationNameArray;
+
 + (instancetype)sharedServiceFactory;
 
 - (id)serviceWithServiceName:(NSString *)serviceName;

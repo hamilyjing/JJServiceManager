@@ -9,6 +9,7 @@
 #import "JJServiceFactory.h"
 
 #import "JJService.h"
+#import "JJServiceNotification.h"
 
 @interface JJServiceFactory ()
 
@@ -20,6 +21,13 @@
 @end
 
 @implementation JJServiceFactory
+
+#pragma mark - life cycle
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark - public
 
@@ -99,6 +107,18 @@
     [self jj_endOperateLock];
 }
 
+#pragma mark - notification
+
+- (void)loginSuccessNotification:(NSNotification *)notification_
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:JJServiceNotificationNameLoginSuccess object:nil];
+}
+
+- (void)logoutNotification:(NSNotification *)notification_
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:JJServiceNotificationNameLogOut object:nil];
+}
+
 #pragma mark - private
 
 - (void)jj_beginOperateLock
@@ -137,6 +157,32 @@
     
     _serviceContainer = [NSMutableDictionary dictionary];
     return _serviceContainer;
+}
+
+- (void)setLoginSuccessNotificationNameArray:(NSArray *)loginSuccessNotificationNameArray
+{
+    [_loginSuccessNotificationNameArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:obj object:nil];
+    }];
+    
+    _loginSuccessNotificationNameArray = loginSuccessNotificationNameArray;
+    
+    [_loginSuccessNotificationNameArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessNotification:) name:obj object:nil];
+    }];
+}
+
+- (void)setLogoutNotificationNameArray:(NSArray *)logoutNotificationNameArray
+{
+    [_logoutNotificationNameArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:obj object:nil];
+    }];
+    
+    _logoutNotificationNameArray = logoutNotificationNameArray;
+    
+    [_logoutNotificationNameArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:obj object:nil];
+    }];
 }
 
 @end
