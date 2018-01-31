@@ -8,8 +8,6 @@
 
 #import "JJService.h"
 
-#import <os/lock.h>
-
 #import "JJFeatureSet.h"
 #import "JJServiceNotification.h"
 #import "JJCustomRequest.h"
@@ -19,11 +17,13 @@
 
 @property (nonatomic, strong) NSMutableDictionary *featureSetContainer;
 
-@property (nonatomic, assign) os_unfair_lock_t delegateListOperationLock;
+@property (nonatomic, strong) dispatch_semaphore_t delegateListOperationLock;
 @property (nonatomic, strong) NSHashTable *delegateList;
 
-@property (nonatomic, assign) os_unfair_lock_t spinLock;
+@property (nonatomic, strong) dispatch_semaphore_t spinLock;
 @property (nonatomic, assign) NSInteger requestFinishCount;
+
+@property (nonatomic, strong) dispatch_semaphore_t featureSetLock;
 
 @property (nonatomic, strong) NSDate *recordExistBeginDate;
 
@@ -46,9 +46,11 @@
         self.unusedExistSecondTimeInterval = 20;
         self.recordExistBeginDate = [NSDate date];
         
-        self.delegateListOperationLock = &(OS_UNFAIR_LOCK_INIT);
+        self.delegateListOperationLock = dispatch_semaphore_create(1);
         
-        self.spinLock = &(OS_UNFAIR_LOCK_INIT);
+        self.spinLock = dispatch_semaphore_create(1);
+        
+        self.featureSetLock = dispatch_semaphore_create(1);
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessNotification:) name:JJServiceNotificationNameLoginSuccess object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:JJServiceNotificationNameLogOut object:nil];
@@ -128,9 +130,12 @@
 {
     NSParameterAssert(featureSetName_);
     
+    [self jj_beginLockFeatureSetOperation];
+    
     JJFeatureSet *featureSet = self.featureSetContainer[featureSetName_];
     if (featureSet)
     {
+        [self jj_beginLockFeatureSetOperation];
         return featureSet;
     }
     
@@ -140,6 +145,7 @@
     self.featureSetContainer[featureSetName_] = featureSet;
     [featureSet featureSetDidLoad];
     
+    [self jj_beginLockFeatureSetOperation];
     return featureSet;
 }
 
@@ -147,10 +153,14 @@
 {
     NSParameterAssert(featureSetName_);
     
+    [self jj_beginLockFeatureSetOperation];
+    
     JJFeatureSet *featureSet = self.featureSetContainer[featureSetName_];
     [featureSet featureSetWillUnload];
     [self.featureSetContainer removeObjectForKey:featureSetName_];
     [featureSet featureSetDidUnload];
+    
+    [self jj_beginLockFeatureSetOperation];
 }
 
 - (void)serviceResponseCallBack:(NSString *)identity_
@@ -258,7 +268,7 @@
 
 - (void)recordRequestFinishCount:(NSInteger)count_
 {
-    os_unfair_lock_lock(_spinLock);
+    dispatch_semaphore_wait(_spinLock, DISPATCH_TIME_FOREVER);
     
     self.requestFinishCount = self.requestFinishCount + count_;
     
@@ -267,7 +277,7 @@
         self.recordExistBeginDate = [NSDate date];
     }
     
-    os_unfair_lock_unlock(_spinLock);
+    dispatch_semaphore_signal(_spinLock);
 }
 
 - (void)saveCustomModel:(id<NSCoding>)model
@@ -312,12 +322,22 @@
 
 - (void)jj_beginLockDelegateListOperation
 {
-    os_unfair_lock_lock(_delegateListOperationLock);
+    dispatch_semaphore_wait(_delegateListOperationLock, DISPATCH_TIME_FOREVER);
 }
 
 - (void)jj_endLockDelegateListOperation
 {
-    os_unfair_lock_unlock(_delegateListOperationLock);
+    dispatch_semaphore_signal(_delegateListOperationLock);
+}
+
+- (void)jj_beginLockFeatureSetOperation
+{
+    dispatch_semaphore_wait(_featureSetLock, DISPATCH_TIME_FOREVER);
+}
+
+- (void)jj_endLockFeatureSetOperation
+{
+    dispatch_semaphore_signal(_featureSetLock);
 }
 
 - (BOOL)jj_isEmpty:(NSHashTable *)hashTable

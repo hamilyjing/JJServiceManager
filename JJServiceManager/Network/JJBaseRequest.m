@@ -189,7 +189,7 @@ static long g_networkRequestIndex = 1;
 - (NSString *)savedFileDirectory
 {
     NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    cachesDirectory = [cachesDirectory stringByAppendingPathComponent:@"JJBaseRequest"];
+    cachesDirectory = [cachesDirectory stringByAppendingPathComponent:@"JJServiceModelCache"];
     
     if ([self.userCacheDirectory length] > 0)
     {

@@ -8,14 +8,12 @@
 
 #import "JJServiceFactory.h"
 
-#import <os/lock.h>
-
 #import "JJService.h"
 
 @interface JJServiceFactory ()
 
 @property (nonatomic, strong) NSMutableDictionary *serviceContainer;
-@property (nonatomic, assign) os_unfair_lock_t operateLock;
+@property (nonatomic, strong) dispatch_semaphore_t operateLock;
 
 @property (nonatomic, strong) NSDate *beginDateOfUnloadingService;
 
@@ -31,7 +29,7 @@
     static JJServiceFactory *instance;
     dispatch_once(&once, ^{
         instance = [[self alloc] init];
-        instance.operateLock = &(OS_UNFAIR_LOCK_INIT);
+        instance.operateLock = dispatch_semaphore_create(1);
         instance.checkIntervalOfUnloadingService = 10;
         instance.beginDateOfUnloadingService = [NSDate date];
     });
@@ -105,12 +103,12 @@
 
 - (void)jj_beginOperateLock
 {
-    os_unfair_lock_lock(_operateLock);
+    dispatch_semaphore_wait(_operateLock, DISPATCH_TIME_FOREVER);
 }
 
 - (void)jj_endOperateLock
 {
-    os_unfair_lock_unlock(_operateLock);
+    dispatch_semaphore_signal(_operateLock);
 }
 
 - (void)jj_unloadUnneededServiceWithNoLock
