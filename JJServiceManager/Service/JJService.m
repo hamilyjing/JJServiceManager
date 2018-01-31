@@ -135,7 +135,7 @@
     JJFeatureSet *featureSet = self.featureSetContainer[featureSetName_];
     if (featureSet)
     {
-        [self jj_beginLockFeatureSetOperation];
+        [self jj_endLockFeatureSetOperation];
         return featureSet;
     }
     
@@ -145,7 +145,7 @@
     self.featureSetContainer[featureSetName_] = featureSet;
     [featureSet featureSetDidLoad];
     
-    [self jj_beginLockFeatureSetOperation];
+    [self jj_endLockFeatureSetOperation];
     return featureSet;
 }
 
@@ -160,7 +160,7 @@
     [self.featureSetContainer removeObjectForKey:featureSetName_];
     [featureSet featureSetDidUnload];
     
-    [self jj_beginLockFeatureSetOperation];
+    [self jj_endLockFeatureSetOperation];
 }
 
 - (void)serviceResponseCallBack:(NSString *)identity_
